@@ -16,69 +16,71 @@ Esta guía paso a paso revela las herramientas automatizadas y los flujos de tra
 
 ![Design system overview](/design-systems-for-developers/design-system-overview.jpg)
 
-## What’s all the fuss about design systems anyways?
+## ¿Por qué tanto interés en los sistemas de diseño?
 
-Let’s get something out of the way: the concept of a reusable user interface isn’t new. Styleguides, UI kits, and shareable widgets have existed for decades. Today, designers and developers are aligning towards the UI component construct. A UI component encapsulates the visual and functional properties of discrete user interface pieces. Think LEGO bricks.
+Vamos a aclarar algo: el concepto de una interfaz de usuario reutilizable no es nuevo. Las guías de estilo, kits de UI y widgets compartibles han existido durante décadas. Hoy en día, diseñadores y desarrolladores están alineándose hacia la construcción de componentes de interfaz de usuario (UI). Un componente de UI encapsula las propiedades visuales y funcionales de las piezas discretas de la interfaz de usuario. Piensa en bloques de LEGO.
 
-Modern user interfaces are assembled from hundreds of modular UI components that are rearranged to deliver different user experiences.
+Las interfaces de usuario modernas se ensamblan a partir de cientos de componentes modulares de UI que se reorganizan para ofrecer diferentes experiencias de usuario.
+
+Los sistemas de diseño contienen componentes de UI reutilizables que ayudan a los equipos a construir interfaces de usuario complejas, duraderas y accesibles en diferentes proyectos. Ya que tanto diseñadores como desarrolladores contribuyen a los componentes de UI, el sistema de diseño sirve como un puente entre disciplinas. También es la “fuente de verdad” para los componentes comunes de una organización.
 
 Design systems contain reusable UI components that help teams build complex, durable, and accessible user interfaces across projects. Since both designers and developers contribute to the UI components, the design system serves as a bridge between disciplines. It is also the “source of truth” for an organization’s common components.
 
 ![Design systems bridge design and development](/design-systems-for-developers/design-system-context.jpg)
 
-Designers often talk about building design systems inside their tools. The holistic scope of a design system encompasses assets (Sketch, Figma, etc.), overarching design principles, contribution structure, governance, and more. There’s an abundance of designer-oriented guides that dive deep into these topics so we won’t rehash that here.
+Los diseñadores a menudo hablan de construir sistemas de diseño dentro de sus herramientas. El alcance holístico de un sistema de diseño abarca activos (Sketch, Figma, etc.), principios de diseño generales, estructura de contribución, gobernanza y más. Existen abundantes guías orientadas a diseñadores que profundizan en estos temas, por lo que no repetiremos eso aquí.
 
-For developers, a few things are certain. Production design systems must include the UI components and the frontend infrastructure behind it all. There are three technical parts to a design system that we’ll talk about in this guide:
+Para los desarrolladores, hay algunas cosas seguras. Los sistemas de diseño en producción deben incluir los componentes de UI y la infraestructura frontend que los respalda. Hay tres partes técnicas de un sistema de diseño que hablaremos en esta guía:
 
-- 🏗 Common reusable UI components
-- 🎨 Design tokens: Styling-specific variables such as brand colors and spacing
-- 📕 Documentation site: Usage instructions, narrative, do’s and don'ts
+- 🏗 Componentes de UI comunes y reutilizables
+- 🎨 Tokens de diseño: Variables específicas de estilo como colores de marca y espaciado
+- 📕 Sitio de documentación: Instrucciones de uso, narrativa, lo que se debe y no se debe hacer
 
-The parts are packaged up, versioned, and distributed to consumer apps via a package manager.
+Las partes se empaquetan, se versionan y se distribuyen a las aplicaciones consumidoras a través de un gestor de paquetes.
 
-## Do you need a design system?
+## ¿Necesitas un sistema de diseño?
 
-Despite the hype, a design system isn’t a silver bullet. If you work with a modest team on a single app, you’re better off with a directory of UI components instead of setting up the infrastructure to enable a design system. For small projects, the cost of maintenance, integration, and tooling far outweighs any productivity benefits you might see.
+A pesar del boom, un sistema de diseño no es una solución mágica. Si trabajas con un equipo modesto en una sola aplicación, es mejor contar con un directorio de componentes de UI en lugar de configurar toda la infraestructura para habilitar un sistema de diseño. En proyectos pequeños, el costo de mantenimiento, integración y herramientas supera con creces cualquier beneficio de productividad que puedas obtener.
 
-The economy of scale in a design system works in your favor when sharing UI components across many projects. If you find yourself pasting the same UI components in different apps or across teams, this guide is for you.
+La economía de escala de un sistema de diseño juega a tu favor cuando compartes componentes de UI en varios proyectos. Si te encuentras copiando y pegando los mismos componentes de UI en diferentes aplicaciones o entre equipos, esta guía es para ti.
 
-## What we’re building
+## Lo que estamos construyendo
 
-Storybook powers the design systems for [BBC](https://www.bbc.co.uk/iplayer/storybook/index.html?path=/story/style-guide--colours), [Airbnb](https://github.com/airbnb/lunar), [IBM](https://www.carbondesignsystem.com/), [GitHub](https://primer.style/css/), and hundreds more companies. The recommendations here are inspired by best practices and tools from the smartest teams. We’ll be building the following frontend stack:
+Storybook potencia los sistemas de diseño de [BBC](https://www.bbc.co.uk/iplayer/storybook/index.html?path=/story/style-guide--colours), [Airbnb](https://github.com/airbnb/lunar), [IBM](https://www.carbondesignsystem.com/), [GitHub](https://primer.style/css/), y cientos de otras empresas. Las recomendaciones aquí están inspiradas en las mejores prácticas y herramientas de los equipos más inteligentes. Vamos a construir la siguiente pila frontend:
 
-#### Build components
+#### Componentes de construcción
 
-- 📚 [Storybook](http://storybook.js.org) for UI component development and auto-generated docs
-- ⚛️ [React](https://reactjs.org/) for declarative component-centric UI (via create-react-app)
-- 💅 [Emotion](https://emotion.sh/docs/introduction) for component-scoped styling
-- ✨ [Prettier](https://prettier.io/) for automatic code formatting
+- 📚 [Storybook](http://storybook.js.org) para el desarollo de componentes UI y documentación generada automáticamente
+- ⚛️ [React](https://reactjs.org/) para una UI centrada en componentes declarativos (a través de create-react-app)
+- 💅 [Emotion](https://emotion.sh/docs/introduction) para estilos específicos de componentes
+- ✨ [Prettier](https://prettier.io/) para el formateo automático del código
 
-#### Maintain the system
+#### Mantener el sistema
 
-- 🚥 [GitHub Actions](https://github.com/features/actions) for continuous integration
-- 📐 [ESLint](https://eslint.org/) for JavaScript linting
-- ✅ [Chromatic](https://www.chromatic.com/?utm_source=storybook_website&utm_medium=link&utm_campaign=storybook) to catch visual bugs in components (by Storybook maintainers)
-- 📦 [npm](https://npmjs.com) for distributing the library
-- 🛠 [Auto](https://github.com/intuit/auto) for release management workflow
+- 🚥 [GitHub Actions](https://github.com/features/actions) para integración continua
+- 📐 [ESLint](https://eslint.org/) para linting de JavaScript
+- ✅ [Chromatic](https://www.chromatic.com/?utm_source=storybook_website&utm_medium=link&utm_campaign=storybook) para detectar errores visuales en los componentes (por los mantenedores de Storybook)
+- 📦 [npm](https://npmjs.com) para distribuir la librería
+- 🛠 [Auto](https://github.com/intuit/auto) para el flujo de trabajo de gestión de lanzamientos
 
-#### Storybook addons
+#### Complementos (addons) de Storybook
 
-- ♿ [Accessibility](https://github.com/storybookjs/storybook/tree/master/addons/a11y) to check for accessibility issues during development
-- 💥 [Actions](https://storybook.js.org/docs/react/essentials/actions) to QA click and tap interactions
-- 🎛 [Controls](https://storybook.js.org/docs/react/essentials/controls) to interactively adjust props to experiment with components
-- 📕 [Docs](https://storybook.js.org/docs/react/writing-docs/introduction) for automatic documentation generation from stories
-- 🔍 [Interactions](https://storybook.js.org/addons/@storybook/addon-interactions/) for debugging component interactions
-- 🏎 [Test-runner](https://storybook.js.org/docs/react/writing-tests/test-runner) for automated component testing
+- ♿ [Accesibilidad](https://github.com/storybookjs/storybook/tree/master/addons/a11y) para verificar problemas de accesibilidad durante el desarrollo
+- 💥 [Acciones](https://storybook.js.org/docs/react/essentials/actions) para el aseguramiento de calidad (QA) de interacciones de clic y toque
+- 🎛 [Controles](https://storybook.js.org/docs/react/essentials/controls) para ajustar interactivamente las props y experimentar con los componentes
+- 📕 [Docs](https://storybook.js.org/docs/react/writing-docs/introduction)  para la generación automática de documentación a partir de historias
+- 🔍 [Interacciones](https://storybook.js.org/addons/@storybook/addon-interactions/) para depurar interacciones de componentes
+- 🏎 [Test-runner](https://storybook.js.org/docs/react/writing-tests/test-runner) para pruebas automatizadas de componentes
 
 ![Design system workflow](/design-systems-for-developers/design-system-workflow.jpg)
 
-## Understand the workflow
+## Comprender el flujo de trabajo
 
-Design systems are an investment in frontend infrastructure. In addition to showcasing how to use the technology above, this guide also focuses on core workflows that promote adoption and simplify maintenance. Wherever possible, manual tasks will be automated. Below are the activities we’ll encounter.
+Los sistemas de diseño son una inversión en infraestructura frontend. Además de mostrar cómo utilizar la tecnología mencionada, esta guía también se centra en los flujos de trabajo esenciales que promueven la adopción y simplifican el mantenimiento. Siempre que sea posible, se automatizarán las tareas manuales. A continuación se presentan las actividades que encontraremos.
 
-#### Build UI components in isolation
+#### Construir componentes de UI de forma aislada
 
-Every design system is composed of UI components. We’ll use Storybook as a “workbench” to build UI components in isolation outside of our consumer apps. Then we’ll integrate timesaving addons that help you increase component durability (Actions, A11y, Controls, Interactions).
+Cada sistema de diseño se compone de componentes de UI. Usaremos Storybook como un 'taller' para construir componentes de UI de manera aislada, fuera de nuestras aplicaciones consumidoras. Luego, integraremos complementos que ahorran tiempo y te ayudarán a aumentar la durabilidad de los componentes (Acciones, A11y, Controles, Interacciones).
 
 #### Review to reach consensus and gather feedback
 
