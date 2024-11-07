@@ -82,24 +82,24 @@ Los sistemas de diseño son una inversión en infraestructura frontend. Además 
 
 Cada sistema de diseño se compone de componentes de UI. Usaremos Storybook como un 'taller' para construir componentes de UI de manera aislada, fuera de nuestras aplicaciones consumidoras. Luego, integraremos complementos que ahorran tiempo y te ayudarán a aumentar la durabilidad de los componentes (Acciones, A11y, Controles, Interacciones).
 
-#### Review to reach consensus and gather feedback
+#### Revisar para alcanzar un consenso y recopilar comentarios
 
-UI development is a team sport that requires alignment between developers, designers, and other disciplines. We’ll publish work-in-progress UI components to loop stakeholders into the development process so we can ship faster.
+El desarrollo de la interfaz de usuario es un deporte de equipo que requiere alineación entre desarrolladores, diseñadores y otras disciplinas. Publicaremos componentes de UI en progreso para involucrar a los interesados en el proceso de desarrollo, de modo que podamos avanzar más rápido.
 
-#### Test to prevent UI bugs
+#### Probar para prevenir errores en la UI
 
-Design systems are a single source of truth and a single point of failure. Minor UI bugs in basic components can snowball into company-wide incidents. We’ll automate tests to help you mitigate the inevitable bugs to ship durable, accessible UI components with confidence.
+Los sistemas de diseño son una única fuente de verdad y un único punto de fallo. Pequeños errores en componentes básicos de UI pueden convertirse en incidentes que afecten a toda la empresa. Automatizaremos las pruebas para ayudarte a mitigar los errores inevitables y así lanzar componentes de UI duraderos y accesibles con confianza.
 
-#### Document to accelerate adoption
+#### Documentar para acelerar la adopción
 
-Documentation is essential, but creating it is often a developer’s last priority. We’ll make it much easier for you to document UI components by auto-generating minimum viable docs which can be further customized.
+La documentación es esencial, pero a menudo es la última prioridad para los desarrolladores. Facilitaremos la documentación de componentes de UI al generar automáticamente documentación mínima viable, que luego podrás personalizar.
 
-#### Distribute the design system to consumer projects
+#### Distribuir el sistema de diseño a proyectos de consumo
 
-Once you have well-documented UI components, you need to distribute them to other teams. We’ll cover packaging, publishing, and how to surface the design system in other Storybooks.
+Una vez que tengas componentes de UI bien documentados, necesitas distribuirlos a otros equipos. Hablaremos sobre el empaquetado, la publicación y cómo mostrar el sistema de diseño en otros Storybooks.
 
-## Storybook Design System
+## Sistema de diseño de Storybook
 
-This guide’s example design system was inspired by Storybook’s own [production design system](https://github.com/storybookjs/design-system). It is consumed by three sites and touched by tens of thousands of developers in the Storybook ecosystem.
+El sistema de diseño de ejemplo en esta guía se inspiró en el [sistema de diseño en producción](https://github.com/storybookjs/design-system) de Storybook. Es utilizado por tres sitios y por decenas de miles de desarrolladores en el ecosistema de Storybook.
 
-In the next chapter, we’ll show you how to extract a design system from disparate component libraries.
+En el próximo capítulo, te mostraremos cómo extraer un sistema de diseño a partir de diferentes bibliotecas de componentes.
